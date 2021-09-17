@@ -1,28 +1,36 @@
-class Drop{
-constructor(x,y){
-        var options = {
-            'restitution':0.8,
-            'friction':0.1,
-            'density':1.0
-        }
-        this.body = Bodies.circle(x, y, r, options);
-        this.radius = r;
-        World.add(world, this.body);
-      }
 
-      update(){
-        if(this.body.position.y > height){
-          Matter.Body.setPosition(this.body, {x:random(0,400),y:random(0,400)})
-        }
-      }
-      display(){
-        push();
-        droplet = this.body.position
-        translate(droplet.x, droplet.y);
-        ellipseMODE(RADIUS)
-        strokeWeight(3);
-        fill(0, 0, 255)
-        ellipse(x,y,r,r);
-        pop();
-      }
+const Engine = Matter.Engine;
+const World = Matter.World;
+const Bodies = Matter.Bodies;
+const Body = Matter.Body;
+
+var drops = [];
+var maxDrops = 100
+
+function preload(){
+    
 }
+
+function setup(){
+    createCanvas(500, 800);
+	rectMode(CENTER);
+
+	for(var i=0; i < maxDrops; i++){
+	drops.push(new Drop(random(0,400), random(0,400)));
+	}
+
+	engine = Engine.create();
+	world = engine.world;
+	
+
+	Engine.run(engine); 
+}
+
+function draw(){
+	background(0);
+	for(var i = 0; i < maxDrops; i++){
+		drops[i].display();
+		drops[i].display();
+	}
+}   
+
