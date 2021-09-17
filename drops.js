@@ -9,22 +9,20 @@ constructor(x,y){
         this.radius = r;
         World.add(world, this.body);
       }
+
+      update(){
+        if(this.body.position.y > height){
+          Matter.Body.setPosition(this.body, {x:random(0,400),y:random(0,400)})
+        }
+      }
       display(){
         push();
-        droplet = this.body.position
+        droplet = this.body.position;
         translate(droplet.x, droplet.y);
-        rectMODE(CENTER)
+        ellipseMode(RADIUS):
         strokeWeight(3);
         fill(0, 0, 255)
         ellipse(x,y,r,r);
         pop();
-
-        var maxDrops = 100
-        for(var i=0; i< maxDrops; i++){
-        Drop.push(new newDrops(random(0,400), random(0,400)));
-        }
-        if(this.newDrops.position.y > height){
-          Matter.Body.setPosition(this.newDrops, {x:random(0,400),y:random(0,400)})
-        }
       }
 }
