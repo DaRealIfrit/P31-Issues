@@ -21,10 +21,10 @@ constructor(x,y){
 
         var maxDrops = 100
         for(var i=0; i< maxDrops; i++){
-        Drop.push(new createDrops(random(0,400), random(0,400)));
+        Drop.push(new newDrops(random(0,400), random(0,400)));
         }
-        if(this.rain.position.y > height){
-          Matter.Body.setPosition(this.rain, {x:random(0,400),y:random(0,400)})
+        if(this.newDrops.position.y > height){
+          Matter.Body.setPosition(this.newDrops, {x:random(0,400),y:random(0,400)})
         }
       }
 }
